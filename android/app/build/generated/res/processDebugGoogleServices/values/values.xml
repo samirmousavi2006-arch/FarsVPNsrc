@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">902220320087-55kmpod28t9batemi3atv787k67ughd6.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">902220320087</string>
+    <string name="google_api_key" translatable="false">AIzaSyDeGwg8jcb8wiHT-nKU5e0ekLlQFrlOPHs</string>
+    <string name="google_app_id" translatable="false">1:902220320087:android:fc391d7290ab0e1cb10212</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDeGwg8jcb8wiHT-nKU5e0ekLlQFrlOPHs</string>
+    <string name="google_storage_bucket" translatable="false">farsvpn.firebasestorage.app</string>
+    <string name="project_id" translatable="false">farsvpn</string>
+</resources>

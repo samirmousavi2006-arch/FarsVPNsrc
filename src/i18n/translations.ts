@@ -1,0 +1,370 @@
+export type Language = 'en' | 'fa';
+
+export type Platform = 'mobile' | 'desktop';
+
+export interface VpnConfig {
+  address: string;
+  port: number;
+  privateKey?: string;
+  publicKey?: string;
+  endpoint?: string;
+  dns?: string[];
+  // Legacy Vless fields
+  uuid?: string;
+  network?: string;
+  security?: string;
+  path?: string;
+  host?: string;
+  flow?: string;
+  sni?: string;
+  encryption?: string;
+}
+
+export interface ServerNode {
+  id: string;
+  name: string;
+  location: string;
+  locationFa: string;
+  basePing: number;
+  online: boolean;
+  comingSoon?: boolean;
+  vpn: VpnConfig;
+}
+
+export const DEFAULT_SERVERS: ServerNode[] = [
+  {
+    id: 'FarsVpn1',
+    name: 'FarsVpn1',
+    location: 'Tehran',
+    locationFa: 'تهران',
+    basePing: 42,
+    online: false,
+    comingSoon: true,
+    vpn: {
+      address: '10.0.0.2/32',
+      port: 51820,
+      privateKey: 'CBPimBs6VodnBNvgcxecGsU8MhfCyRtXQesA32jyY3A=',
+      publicKey: 'IdD9Odmnqunuw+7v88OMXU6tKS18xGYp131sFUUeqy4=',
+      endpoint: '212.23.201.7:51820',
+      dns: ['1.1.1.1', '8.8.8.8'],
+    },
+  },
+  {
+    id: 'FarsVpn2',
+    name: 'FarsVpn2',
+    location: 'Mashhad',
+    locationFa: 'مشهد',
+    basePing: 58,
+    online: true,
+    comingSoon: false,
+    vpn: {
+      address: '10.0.1.2/32',
+      port: 51820,
+      privateKey: 'CBPimBs6VodnBNvgcxecGsU8MhfCyRtXQesA32jyY3A=',
+      publicKey: 'EQoesgwQUhBlfc0vr9zbSiDPdMdNVs0MbGyA3ePVKVs=',
+      endpoint: '45.94.215.78:51820',
+      dns: ['1.1.1.1', '8.8.8.8'],
+    },
+  },
+];
+
+type Dict = Record<string, string>;
+
+export const translations: Record<Language, Dict> = {
+  en: {
+    appName: 'FarsVPN',
+    tagline: 'Reverse VPN — Iran IP Access',
+    selectLanguage: 'Select Your Language',
+    selectLanguageSub: 'Choose your preferred language to continue',
+    english: 'English',
+    persian: 'فارسی',
+    continue: 'Continue',
+
+    // ToS
+    tosTitle: 'Terms of Service',
+    tosSub: 'Please read and accept the terms to continue',
+    scrollToAccept: 'Scroll to the bottom to accept',
+    iAgree: 'I agree to the Terms of Service',
+    acceptContinue: 'Accept & Continue',
+    mustAgree: 'Please review and check the agreement box',
+
+    // Auth
+    login: 'Log In',
+    signup: 'Sign Up',
+    guestSession: 'Continue as Guest',
+    email: 'Email Address',
+    password: 'Password',
+    confirmPassword: 'Confirm Password',
+    enterEmail: 'Enter your email',
+    enterPassword: 'Enter your password',
+    noAccount: 'Don\'t have an account?',
+    haveAccount: 'Already have an account?',
+    authSub: 'Secure access to your Iran IP connection',
+    welcomeBack: 'Welcome Back',
+    createAccount: 'Create Account',
+    guestNote: 'Guest sessions are limited to 1 hour per connection',
+
+    // Dashboard
+    dashboard: 'Dashboard',
+    connectionStatus: 'Connection Status',
+    connected: 'Connected',
+    disconnected: 'Disconnected',
+    connecting: 'Connecting...',
+    selectServer: 'Select a Server',
+    selectServerSub: 'Choose your preferred Iran server node',
+    ping: 'Ping',
+    ms: 'ms',
+    refresh: 'Refresh',
+    connect: 'Connect',
+    disconnect: 'Disconnect',
+    reconnect: 'Reconnect',
+    waitingPermission: 'Waiting for Permission...',
+    sessionTime: 'Session Time',
+    sessionExpired: 'Session Expired',
+    sessionExpiredMsg: 'Your 2-hour session has ended. Reconnect to continue browsing.',
+    timeRemaining: 'Time Remaining',
+    protected: 'Protected',
+    unprotected: 'Unprotected',
+    yourIp: 'Your IP',
+    iranIp: 'Iran IP',
+    adRequired: 'Ad Required',
+    adRequiredMsg: 'Watch a 30-second ad to connect',
+    watchAd: 'Watch Ad & Connect',
+    adIn: 'Ad in',
+    skip: 'Skip',
+    adPlaying: 'Advertisement Playing',
+    adPlayingSub: 'Your connection will activate after the ad',
+    connectingAfterAd: 'Establishing secure connection...',
+    backToLogin: 'Log Out',
+
+    // Platform switcher
+    platformSwitcher: 'Platform Preview',
+    mobileView: 'Mobile (Ads)',
+    desktopView: 'Desktop (Ad-Free)',
+
+    // Navigation
+    navDashboard: 'Dashboard',
+    navSettings: 'Settings',
+    navHistory: 'History',
+    navAdmin: 'Admin',
+
+    // Settings
+    settingsTitle: 'Settings',
+    settingsSub: 'Manage your account and preferences',
+    settingsAccount: 'Account',
+    settingsPreferences: 'Preferences',
+    settingsAbout: 'About',
+    accountType: 'Account Type',
+    accountTypeGuest: 'Guest',
+    accountTypeUser: 'Registered User',
+    accountEmail: 'Email',
+    accountUid: 'User ID',
+    language: 'Language',
+    changeLanguage: 'Change Language',
+    signOut: 'Sign Out',
+    signOutConfirm: 'Are you sure you want to sign out?',
+    appVersion: 'App Version',
+    versionNumber: '1.0.0',
+    backToDashboard: 'Back to Dashboard',
+
+    // History
+    historyTitle: 'Connection History',
+    historySub: 'Your recent VPN connection sessions',
+    historyEmpty: 'No connections yet',
+    historyEmptySub: 'Connect to a server to start building your history',
+    historyServer: 'Server',
+    historyStarted: 'Started',
+    historyEnded: 'Ended',
+    historyDuration: 'Duration',
+    historyStatus: 'Status',
+    historyActive: 'Active',
+    historyCompleted: 'Completed',
+    historyDisconnected: 'Disconnected',
+    historyExpired: 'Expired',
+    historyJustNow: 'Just now',
+    historyMinAgo: 'min ago',
+    historyHoursAgo: 'h ago',
+    historyDaysAgo: 'd ago',
+
+    // Admin
+    adminTitle: 'Admin Panel',
+    adminSub: 'Manage servers and monitor active sessions',
+    adminServers: 'Servers',
+    adminSessions: 'Active Sessions',
+    adminUsers: 'Registered Users',
+    adminAddServer: 'Add Server',
+    adminServerName: 'Server Name',
+    adminServerLocation: 'Location (English)',
+    adminServerLocationFa: 'Location (Farsi)',
+    adminServerPing: 'Base Ping',
+    adminServerOnline: 'Online',
+    adminServerOffline: 'Offline',
+    adminToggleOnline: 'Toggle Status',
+    adminRemove: 'Remove',
+    adminSave: 'Save',
+    adminCancel: 'Cancel',
+    adminNoSessions: 'No active sessions',
+    adminNoSessionsSub: 'No users are currently connected',
+    adminNoUsers: 'No registered users',
+    adminUserEmail: 'Email',
+    adminUserJoined: 'Joined',
+    adminAccessDenied: 'Access Denied',
+    adminAccessDeniedSub: 'You need admin privileges to access this page',
+    adminTotalServers: 'Total Servers',
+    adminOnlineServers: 'Online Servers',
+
+    // Misc
+    poweredBy: 'Powered by FarsVPN Network',
+    secure: 'AES-256 Encrypted',
+    online: 'Online',
+    offline: 'Offline',
+    comingSoon: 'Coming Soon',
+    loading: 'Loading...',
+    error: 'Something went wrong',
+    retry: 'Retry',
+    close: 'Close',
+  },
+  fa: {
+    appName: 'فارس وی‌پی‌ان',
+    tagline: 'وی‌پی‌ان معکوس — دسترسی به آی‌پی ایران',
+    selectLanguage: 'زبان خود را انتخاب کنید',
+    selectLanguageSub: 'برای ادامه، زبان مورد نظر خود را انتخاب نمایید',
+    english: 'English',
+    persian: 'فارسی',
+    continue: 'ادامه',
+
+    tosTitle: 'شرایط و قوانین استفاده',
+    tosSub: 'لطفاً قوانین را مطالعه کرده و بپذیرید',
+    scrollToAccept: 'برای پذیرش، به پایین اسکرول کنید',
+    iAgree: 'با شرایط و قوانین استفاده موافقم',
+    acceptContinue: 'پذیرش و ادامه',
+    mustAgree: 'لطفاً قوانین را بررسی کرده و تیک پذیرش را بزنید',
+
+    login: 'ورود',
+    signup: 'ثبت‌نام',
+    guestSession: 'ورود به‌عنوان مهمان',
+    email: 'آدرس ایمیل',
+    password: 'رمز عبور',
+    confirmPassword: 'تکرار رمز عبور',
+    enterEmail: 'ایمیل خود را وارد کنید',
+    enterPassword: 'رمز عبور خود را وارد کنید',
+    noAccount: 'حساب کاربری ندارید؟',
+    haveAccount: 'قبلاً حساب دارید؟',
+    authSub: 'دسترسی امن به اتصال آی‌پی ایران',
+    welcomeBack: 'خوش آمدید',
+    createAccount: 'ساخت حساب کاربری',
+    guestNote: 'نشست‌های مهمان به ۱ ساعت در هر اتصال محدود است',
+
+    dashboard: 'داشبورد',
+    connectionStatus: 'وضعیت اتصال',
+    connected: 'متصل',
+    disconnected: 'قطع شده',
+    connecting: 'در حال اتصال...',
+    selectServer: 'انتخاب سرور',
+    selectServerSub: 'گره سرور ایران مورد نظر خود را انتخاب کنید',
+    ping: 'پینگ',
+    ms: 'میلی‌ثانیه',
+    refresh: 'بروزرسانی',
+    connect: 'اتصال',
+    disconnect: 'قطع اتصال',
+    reconnect: 'اتصال مجدد',
+    waitingPermission: 'در انتظار مجوز...',
+    sessionTime: 'زمان نشست',
+    sessionExpired: 'نشست منقضی شد',
+    sessionExpiredMsg: 'نشست ۲ ساعته شما پایان یافت. برای ادامه مرور، مجدداً متصل شوید.',
+    timeRemaining: 'زمان باقیمانده',
+    protected: 'حفاظت شده',
+    unprotected: 'بدون حفاظت',
+    yourIp: 'آی‌پی شما',
+    iranIp: 'آی‌پی ایران',
+    adRequired: 'نیاز به تبلیغ',
+    adRequiredMsg: 'برای اتصال، ۳۰ ثانیه تبلیغ تماشا کنید',
+    watchAd: 'تبلیغ تماشا کنید و متصل شوید',
+    adIn: 'تبلیغ در',
+    skip: 'رد شدن',
+    adPlaying: 'در حال پخش تبلیغ',
+    adPlayingSub: 'اتصال شما پس از تبلیغ فعال خواهد شد',
+    connectingAfterAd: 'ایجاد اتصال امن...',
+    backToLogin: 'خروج از حساب',
+
+    platformSwitcher: 'پیش‌نمایش پلتفرم',
+    mobileView: 'موبایل (با تبلیغ)',
+    desktopView: 'دسکتاپ (بدون تبلیغ)',
+
+    navDashboard: 'داشبورد',
+    navSettings: 'تنظیمات',
+    navHistory: 'تاریخچه',
+    navAdmin: 'مدیریت',
+
+    settingsTitle: 'تنظیمات',
+    settingsSub: 'مدیریت حساب و ترجیحات',
+    settingsAccount: 'حساب کاربری',
+    settingsPreferences: 'ترجیحات',
+    settingsAbout: 'درباره',
+    accountType: 'نوع حساب',
+    accountTypeGuest: 'مهمان',
+    accountTypeUser: 'کاربر ثبت‌شده',
+    accountEmail: 'ایمیل',
+    accountUid: 'شناسه کاربر',
+    language: 'زبان',
+    changeLanguage: 'تغییر زبان',
+    signOut: 'خروج از حساب',
+    signOutConfirm: 'آیا مطمئن هستید که می‌خواهید خارج شوید؟',
+    appVersion: 'نسخه برنامه',
+    versionNumber: '۱.۰.۰',
+    backToDashboard: 'بازگشت به داشبورد',
+
+    historyTitle: 'تاریخچه اتصال',
+    historySub: 'نشست‌های اتصال وی‌پی‌ان اخیر شما',
+    historyEmpty: 'هنوز اتصالی وجود ندارد',
+    historyEmptySub: 'برای شروع ساخت تاریخچه، به سرور متصل شوید',
+    historyServer: 'سرور',
+    historyStarted: 'شروع',
+    historyEnded: 'پایان',
+    historyDuration: 'مدت',
+    historyStatus: 'وضعیت',
+    historyActive: 'فعال',
+    historyCompleted: 'تکمیل شده',
+    historyDisconnected: 'قطع شده',
+    historyExpired: 'منقضی شده',
+    historyJustNow: 'همین حالا',
+    historyMinAgo: 'دقیقه پیش',
+    historyHoursAgo: 'ساعت پیش',
+    historyDaysAgo: 'روز پیش',
+
+    adminTitle: 'پنل مدیریت',
+    adminSub: 'مدیریت سرورها و نظارت بر نشست‌های فعال',
+    adminServers: 'سرورها',
+    adminSessions: 'نشست‌های فعال',
+    adminUsers: 'کاربران ثبت‌شده',
+    adminAddServer: 'افزودن سرور',
+    adminServerName: 'نام سرور',
+    adminServerLocation: 'موقعیت (انگلیسی)',
+    adminServerLocationFa: 'موقعیت (فارسی)',
+    adminServerPing: 'پینگ پایه',
+    adminServerOnline: 'آنلاین',
+    adminServerOffline: 'آفلاین',
+    adminToggleOnline: 'تغییر وضعیت',
+    adminRemove: 'حذف',
+    adminSave: 'ذخیره',
+    adminCancel: 'انصراف',
+    adminNoSessions: 'نشست فعالی وجود ندارد',
+    adminNoSessionsSub: 'هیچ کاربری در حال حاضر متصل نیست',
+    adminNoUsers: 'کاربر ثبت‌شده‌ای وجود ندارد',
+    adminUserEmail: 'ایمیل',
+    adminUserJoined: 'تاریخ عضویت',
+    adminAccessDenied: 'دسترسی رد شد',
+    adminAccessDeniedSub: 'برای دسترسی به این صفحه به دسترسی مدیر نیاز دارید',
+    adminTotalServers: 'مجموع سرورها',
+    adminOnlineServers: 'سرورهای آنلاین',
+
+    poweredBy: 'پشتیبانی شده توسط شبکه فارس وی‌پی‌ان',
+    secure: 'رمزنگاری AES-256',
+    online: 'آنلاین',
+    offline: 'آفلاین',
+    loading: 'در حال بارگذاری...',
+    error: 'خطایی رخ داد',
+    retry: 'تلاش مجدد',
+    close: 'بستن',
+  },
+};

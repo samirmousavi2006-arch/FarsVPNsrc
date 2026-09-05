@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "902220320087",
+    "project_id": "farsvpn",
+    "storage_bucket": "farsvpn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902220320087:android:fc391d7290ab0e1cb10212",
+        "android_client_info": {
+          "package_name": "com.farsvpn.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902220320087-55kmpod28t9batemi3atv787k67ughd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeGwg8jcb8wiHT-nKU5e0ekLlQFrlOPHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902220320087-55kmpod28t9batemi3atv787k67ughd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
